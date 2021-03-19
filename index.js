@@ -7,6 +7,8 @@ let mode = 0;
 let gif = ["https://tenor.com/view/plague-doctor-dance-gif-19130639", "https://tenor.com/view/he-hehe-boy-boi-boyi-gif-7890844", "https://tenor.com/view/why-do-you-cum-cum-cyberpunk-gif-19751361", "https://tenor.com/view/dead-cat-cpr-funny-animals-cute-revive-gif-13712625"];
 let loop = true;
 let default_id = "754049600599621677";
+const ayy = client.emojis.get("822591125973499914");
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
@@ -48,7 +50,7 @@ client.on('ready', () => {
                 }
                 if((message.content.toUpperCase() === "CIMER "+prfix.toUpperCase() || message.content.toUpperCase() === "MRC "+prfix.toUpperCase() || message.content.toUpperCase() === "MERCI "+prfix.toUpperCase() ) && loop)
                 {
-                    message.channel.send("Tkt :eheh:");
+                    message.channel.send("Tkt <:eheh:822591125973499914>");
 
                     loop=false;
 
