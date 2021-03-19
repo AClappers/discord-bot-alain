@@ -1,5 +1,4 @@
 const { Client } = require('discord.js')
-const config = require('./config.json')
 
 const client = new Client({
     partials: ['GUILD_MEMBER', 'CHANNEL', 'USER', 'REACTION']
