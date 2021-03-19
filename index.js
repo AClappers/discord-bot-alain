@@ -49,7 +49,7 @@ client.on('ready', () => {
                 }
                 if((message.content.toUpperCase() === "CIMER "+prfix.toUpperCase() || message.content.toUpperCase() === "MRC "+prfix.toUpperCase() || message.content.toUpperCase() === "MERCI "+prfix.toUpperCase() ) && loop)
                 {
-                    message.channel.send("Tkt <:eheh:822591125973499914>");
+                    message.channel.send("Tkt bg");
 
                     loop=false;
 
