@@ -23,13 +23,14 @@ client.on('ready', () => {
     })
 
     client.on('message', (message) => {
-        if(loop)
-        {
+    
             if(message.author.username != "Eurêka" )
             {
-                if(mode===1)
+                if(mode===1 && loop)
                 {
                     message.reply("Tocard");
+                    loop=false;
+
                 }
 
             }   
@@ -37,46 +38,57 @@ client.on('ready', () => {
 
             if(mode!=2)
             {
-                if(message.content === prfix+", GIF")
+                if(message.content === prfix+", GIF"&& loop)
                 {
                     let rdm = getRandomInt(gif.length);
                     message.reply(gif[rdm]);
+                    loop=false;
+
                 }
             }
             if(message.author.username === "Eurêka")
             {
-                    if(message.content === prfix+", qui est ton guide?" )
+                    if(message.content === prfix+", qui est ton guide?" && loop)
                     {
                         message.channel.send("Toi  :pray:");
+                        loop=false;
+
                     }
-                    if(message.content === prfix+", pourquoi es-tu nul?" )
+                    if(message.content === prfix+", pourquoi es-tu nul?" && loop)
                     {
                         message.channel.send("Demande à David :snake:");
+                        loop=false;
+
                     }
-                    if(message.content === prfix+", mode 1" )
+                    if(message.content === prfix+", mode 1" && loop)
                     {
                         message.channel.send("Oké ! :nerd:");
                         mode=1;
+                        loop=false;
+
                     }
-                    if(message.content === prfix+", mode 2" )
+                    if(message.content === prfix+", mode 2" && loop)
                     {
                         message.channel.send("Mode 2, reçu");
                         mode=2;
+                        loop=false;
+
                     }
-                    if(message.content === prfix+", mode 0" )
+                    if(message.content === prfix+", mode 0" && loop)
                     {
                         message.channel.send("Fait!");
                         mode=0;
+                        loop=false;
                     }
-                    if(message.content === prfix+", t'es en quel mode?" )
+                    if(message.content === prfix+", t'es en quel mode?"&& loop )
                     {
                         message.channel.send("Euh att bg...");
                         message.channel.send("Mode "+mode+" bg");
+                        loop=false;
                     }
                 }  
-                loop=false;
                 setTimeout(reload, 1000)
-            }
+            
     })
 
 })
