@@ -46,7 +46,7 @@ client.on('ready', () => {
                     loop=false;
 
                 }
-                if((message.content === "cimer "+prfix || message.content === "mrc "+prfix || message.content === "merci "+prfix ) && loop)
+                if((message.content.toUpperCase() === "CIMER "+prfix.toUpperCase() || message.content.toUpperCase() === "MRC "+prfix.toUpperCase() || message.content.toUpperCase() === "MERCI "+prfix.toUpperCase() ) && loop)
                 {
                     message.channel.send("Tkt bg");
 
