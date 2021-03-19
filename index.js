@@ -4,7 +4,7 @@ const client = new Client({
     partials: ['GUILD_MEMBER', 'CHANNEL', 'USER', 'REACTION']
 })
 let mode = 0;
-const prfixe = "Alain";
+const prfix = "Alain";
 let gif = ["https://tenor.com/view/plague-doctor-dance-gif-19130639", "https://tenor.com/view/he-hehe-boy-boi-boyi-gif-7890844", "https://tenor.com/view/why-do-you-cum-cum-cyberpunk-gif-19751361", "https://tenor.com/view/dead-cat-cpr-funny-animals-cute-revive-gif-13712625"];
 
 function getRandomInt(max) {
