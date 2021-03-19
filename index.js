@@ -46,6 +46,13 @@ client.on('ready', () => {
                     loop=false;
 
                 }
+                if((message.content === "cimer "+prfix || message.content === "mrc "+prfix || message.content === "merci "+prfix ) && loop)
+                {
+                    message.channel.send("Tkt bg");
+
+                    loop=false;
+
+                }
             }
             if(message.author.username === "Eurêka")
             {
