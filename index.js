@@ -35,7 +35,7 @@ client.on('ready', () => {
         {
             if(!message.author.bot && msg!=undefined)
             {
-                msg.channel.send("De "+message.author.username+"  : "message.content);
+                msg.channel.send("De "+message.author.username+"  : "+message.content);
 
             }
         }
