@@ -33,7 +33,7 @@ client.on('ready', () => {
         }
         else
         {
-            if(!message.author.bot && msg!=undefined)
+            if(!message.author.bot && msg!=undefined && loop)
             {
                 msg.channel.send("De "+message.author.username+"  : "+message.content);
 
@@ -146,7 +146,7 @@ client.on('ready', () => {
                         }
                  
                     }
-                    if(message.content.startsWith(prfix+", dm "))
+                    if(message.content.startsWith(prfix+", dm ") && loop)
                     {
                         msg=message;
                         message.channel.send("Ok");
