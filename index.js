@@ -7,6 +7,7 @@ let mode = 0;
 let gif = ["https://tenor.com/view/plague-doctor-dance-gif-19130639", "https://tenor.com/view/he-hehe-boy-boi-boyi-gif-7890844", "https://tenor.com/view/why-do-you-cum-cum-cyberpunk-gif-19751361", "https://tenor.com/view/dead-cat-cpr-funny-animals-cute-revive-gif-13712625"];
 let loop = true;
 let default_id = "754049600599621677";
+let msg;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -25,7 +26,19 @@ client.on('ready', () => {
     })
 
     client.on('message', (message) => {
-        let mainC = message.guild.channels.cache.get(default_id);
+        if(message.channel.type !="dm")
+        {
+            let mainC = message.guild.channels.cache.get(default_id);
+
+        }
+        else
+        {
+            if(!message.author.bot && msg!=undefined)
+            {
+                msg.channel.send("De "+message.author.username+"  : "message.content);
+
+            }
+        }
             if(message.author.username != "Eurêka" )
             {
                 if(mode===1 && loop)
@@ -125,13 +138,34 @@ client.on('ready', () => {
                         default_id = message.channel.id;
                         loop=false;
                     }
-                    if(mode===3)
+                    if(mode===3 && message.channel.type != "dm")
                     {
                         if(message.channel.id != mainC && message.content != prfix+", stop mode 3" && loop && mainC!=null)
                         {
                             mainC.send(message);
                         }
                  
+                    }
+                    if(message.content.startsWith(prfix+", dm "))
+                    {
+                        msg=message;
+                        message.channel.send("Ok");
+                        let mention = message.mentions.members.first();
+                        if(mention != undefined)
+                        {
+
+                            let args = message.content.split(" ");
+                            let str = "";
+                            for(let i = 3 ; i < args.length ; i++)
+                            {
+                                str+=" "+args[i];
+                            }
+
+                            mention.createDM().then(channel => {
+                               return channel.send(str);
+                            }) ;
+
+                        } 
                     }
                     
                 }  
@@ -140,5 +174,6 @@ client.on('ready', () => {
     })
 
 })
+
 
 client.login(process.env.TOKEN);
