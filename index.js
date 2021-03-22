@@ -8,7 +8,7 @@ let gif = ["https://tenor.com/view/plague-doctor-dance-gif-19130639", "https://t
 let loop = true;
 let default_id = "754049600599621677";
 let msg;
-
+let maicC;
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
@@ -28,12 +28,12 @@ client.on('ready', () => {
     client.on('message', (message) => {
         if(message.channel.type !="dm")
         {
-            let mainC = message.guild.channels.cache.get(default_id);
+             mainC = message.guild.channels.cache.get(default_id);
 
         }
         else
         {
-            if(!message.author.bot && msg!=undefined && loop)
+            if(!message.author.bot && msg!=undefined)
             {
                 msg.channel.send("De "+message.author.username+"  : "+message.content);
 
@@ -136,17 +136,18 @@ client.on('ready', () => {
                     {
                         message.channel.send("Changé :cowboy:");
                         default_id = message.channel.id;
+                        mainC = message.guild.channels.cache.get(default_id);
                         loop=false;
                     }
-                    if(mode===3 && message.channel.type != "dm")
+                    if(mode===3 && message.channel.type != "dm" &&  mainC!=undefined)
                     {
-                        if(message.channel.id != mainC && message.content != prfix+", stop mode 3" && loop && mainC!=null)
+                        if(message.channel.id != mainC && message.content != prfix+", stop mode 3" && loop )
                         {
                             mainC.send(message);
                         }
                  
                     }
-                    if(message.content.startsWith(prfix+", dm ") && loop)
+                    if(message.content.startsWith(prfix+", dm "))
                     {
                         msg=message;
                         message.channel.send("Ok");
