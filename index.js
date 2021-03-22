@@ -53,7 +53,7 @@ client.on('ready', () => {
 
         if(!cWordCheck(args, message))
         {
-        if(msg_content.startsWith(prefix)&& msg_old!=message.id)
+        if(msg_content.startsWith(prefix)&& msg_old!=message.id && !message.author.bot)
         {
             
            
