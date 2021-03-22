@@ -134,7 +134,7 @@ client.on('ready', () => {
         }
         if(mode===2 && mainC!=undefined && usr_md === message.author.id && msg_content!="ALAIN MODE 2")
         {
-            if(message.channel.id != mainC && args[2]!="STOP")
+            if(message.channel.id != mainC && args[0]!="STOP")
             {
                 mainC.send(message.content);
             }
