@@ -70,7 +70,7 @@ client.on('ready', () => {
                     }
                 }
 
-                if(args[2]==="?")
+                if(args[1]==="?")
                 {
                     message.channel.send("ici") //HERE
                 }
@@ -82,13 +82,13 @@ client.on('ready', () => {
                     } 
                     if(message.member.roles.cache.get(default_role))
                     {
-                        if(args[2]==="MODE" && (args[3]=="0" || args[3]=="1" || args[3]=="2"))
+                        if(args[1]==="MODE" && (args[2]=="0" || args[2]=="1" || args[2]=="2"))
                         {
-                            mode = parseInt(args[3]);
+                            mode = parseInt(args[2]);
                             message.channel.send("Fait"); //HERE
 
                         }
-                        if(args[2]==="MODE" && args[3]==="?")
+                        if(args[1]==="MODE" && args[2]==="?")
                         {
                             message.channel.send("Mode = "+mode);
 
@@ -101,13 +101,13 @@ client.on('ready', () => {
                             }
                      
                         }
-                        if(args[2]==="CHANGE" && args[3]==="DEFAULT_ID")
+                        if(args[1]==="CHANGE" && args[2]==="DEFAULT_ID")
                         {
                             message.channel.send("Changé :cowboy:"); //HERE
                             default_id = message.channel.id;
                             mainC = message.guild.channels.cache.get(default_id);
                         }
-                        if(args[2]==="DM" && mode !=2)
+                        if(args[1]==="DM" && mode !=2)
                         {
                         msg=message;
                         message.channel.send("Ok");
