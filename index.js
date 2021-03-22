@@ -132,7 +132,7 @@ client.on('ready', () => {
             
             message.delete();
         }
-        if(mode===2 && mainC!=undefined && usr_md === message.author.id)
+        if(mode===2 && mainC!=undefined && usr_md === message.author.id && msg_content!="ALAIN MODE 2")
         {
             if(message.channel.id != mainC && args[2]!="STOP")
             {
