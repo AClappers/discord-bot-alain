@@ -7,13 +7,13 @@ const client = new Client({
 
 //vars
 let mode = 0;
-let gif = ["https://tenor.com/view/plague-doctor-dance-gif-19130639", "https://tenor.com/view/he-hehe-boy-boi-boyi-gif-7890844", "https://tenor.com/view/why-do-you-cum-cum-cyberpunk-gif-19751361", "https://tenor.com/view/dead-cat-cpr-funny-animals-cute-revive-gif-13712625"];
-let loop = true;
+let mainC;
 let default_id = "754049600599621677";
 let default_role ="823615437894844416";
+let voc_done = ["Fait :cowboy:",""];
+let usr_md;
 let msg;
 let msg_old;
-let maicC;
 let prfix = "Alain";
 let args;
 //funct
@@ -53,7 +53,7 @@ client.on('ready', () => {
 
         if(!cWordCheck(args, message))
         {
-        if(msg_content.startsWith(prefix)&& msg_old!=message.id && !message.author.bot)
+        if(msg_content.startsWith(prefix)&& msg_old!=message.id && !message.author.bot && message.author.id!=usr_md)
         {
             
            
@@ -85,6 +85,10 @@ client.on('ready', () => {
                         if(args[1]==="MODE" && (args[2]=="0" || args[2]=="1" || args[2]=="2"))
                         {
                             mode = parseInt(args[2]);
+                            if(mode===2)
+                            {
+                                usr_md = message.author.id;
+                            }
                             message.channel.send("Fait"); //HERE
 
                         }
@@ -92,14 +96,6 @@ client.on('ready', () => {
                         {
                             message.channel.send("Mode = "+mode);
 
-                        }
-                        if(mode===2 && mainC!=undefined)
-                        {
-                            if(message.channel.id != mainC && args[2]==="STOP")
-                            {
-                                mainC.send(message.content);
-                            }
-                     
                         }
                         if(args[1]==="CHANGE" && args[2]==="DEFAULT_ID")
                         {
@@ -133,7 +129,21 @@ client.on('ready', () => {
             
         } 
         else{
+            
             message.delete();
+        }
+        if(mode===2 && mainC!=undefined && usr_md === message.author.id)
+        {
+            if(message.channel.id != mainC && args[2]!="STOP")
+            {
+                mainC.send(message.content);
+            }
+            else
+            {
+                mode=0;
+                usr_md=undefined;
+            }
+     
         }
     })
 
