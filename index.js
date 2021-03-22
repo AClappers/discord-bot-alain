@@ -26,6 +26,14 @@ client.on('ready', () => {
     })
 
     client.on('message', (message) => {
+        let argse = message.content.split(" ");
+        for(let i = 0 ; i < argse.length ; i++)
+        {
+            if(argse[i].toUpperCase() === "COQUINE" && message.deletable)
+            {
+                message.delete();
+            }
+        }
         if(message.channel.type !="dm")
         {
              mainC = message.guild.channels.cache.get(default_id);
