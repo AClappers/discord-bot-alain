@@ -24,7 +24,7 @@ function getRandomInt(max) {
 function cWordCheck(tab, msg){
     let cWord = false;
     let i = 0;
-    while(cWord===false && i < tab.length)
+    while(cWord===false && i < tab.length )
     {
         if(tab[i] == "COQUINE" && msg.deletable)
         {
@@ -49,11 +49,12 @@ client.on('ready', () => {
 //On message
     client.on('message', (message) => {
         msg_content = message.content.toUpperCase();
+        args = msg_content.split(" ");
+
         if(!cWordCheck(args, message))
         {
         if(msg_content.startsWith(prefix)&& msg_old!=message.id)
         {
-            args = msg_content.split(" ");
             
            
                 msg_old = message.id;
@@ -75,11 +76,11 @@ client.on('ready', () => {
                 }
                 if(message.channel.type!="dm")
                 {
-                    if(!message.author.member.roles.get(default_role) && mode === 1)
+                    if(!message.member.roles.cache.get(default_role) && mode === 1)
                     {
                             message.reply("Tocard"); //HERE
                     } 
-                    if(message.author.member.roles.get(default_role))
+                    if(message.member.roles.cache.get(default_role))
                     {
                         if(args[2]==="MODE" && (args[3]=="0" || args[3]=="1" || args[3]=="2"))
                         {
