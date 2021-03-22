@@ -49,12 +49,13 @@ client.on('ready', () => {
 //On message
     client.on('message', (message) => {
         msg_content = message.content.toUpperCase();
-        if(msg_content.startsWith(prefix))
+        if(!cWordCheck(args, message))
+        {
+        if(msg_content.startsWith(prefix)&& msg_old!=message.id)
         {
             args = msg_content.split(" ");
             
-            if(cWordCheck(args, message) && msg_old!=message.id)
-            {
+           
                 msg_old = message.id;
                 if(message.channel.type !="dm")
                 {
@@ -128,10 +129,11 @@ client.on('ready', () => {
                     }
                 }
                  }
-            else{
-                message.delete();
-            }
+            
         } 
+        else{
+            message.delete();
+        }
     })
 
     })
