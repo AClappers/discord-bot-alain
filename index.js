@@ -10,7 +10,9 @@ let mode = 0;
 let mainC;
 let default_id = "754049600599621677";
 let default_role ="823615437894844416";
-let voc_done = ["Fait :cowboy:",""];
+let voc_done = ["Fait :cowboy:","Oké :nerd:","Vsy bg","Oké :smirk:"];
+let voc_insulte = ["Sale nul", "T'es le meilleur en partant de la fin", "Tocard", "Puanteur", "Pointeur"];
+let voc_here = ["Ici :cowboy:","Oui?","Laisse-moi","Ui?"];
 let usr_md;
 let msg;
 let msg_old;
@@ -55,8 +57,8 @@ client.on('ready', () => {
         {
         if(msg_content.startsWith(prefix)&& msg_old!=message.id && !message.author.bot && message.author.id!=usr_md)
         {
-            
-           
+
+
                 msg_old = message.id;
                 if(message.channel.type !="dm")
                 {
@@ -72,14 +74,14 @@ client.on('ready', () => {
 
                 if(args[1]==="?")
                 {
-                    message.channel.send("ici") //HERE
+                    message.channel.send(voc_here[getRandomInt(voc_here.length)]); //HERE
                 }
                 if(message.channel.type!="dm")
                 {
                     if(!message.member.roles.cache.get(default_role) && mode === 1)
                     {
-                            message.reply("Tocard"); //HERE
-                    } 
+                      message.reply(voc_insulte[getRandomInt(voc_insulte.length)]); //HERE
+                    }
                     if(message.member.roles.cache.get(default_role))
                     {
                         if(args[1]==="MODE" && (args[2]=="0" || args[2]=="1" || args[2]=="2"))
@@ -89,7 +91,7 @@ client.on('ready', () => {
                             {
                                 usr_md = message.author.id;
                             }
-                            message.channel.send("Fait"); //HERE
+                            message.channel.send(voc_done[getRandomInt(voc_done.length)]); //HERE
 
                         }
                         if(args[1]==="MODE" && args[2]==="?")
@@ -99,14 +101,14 @@ client.on('ready', () => {
                         }
                         if(args[1]==="CHANGE" && args[2]==="DEFAULT_ID")
                         {
-                            message.channel.send("Changé :cowboy:"); //HERE
+                            message.channel.send(voc_done[getRandomInt(voc_done.length)]); //HERE
                             default_id = message.channel.id;
                             mainC = message.guild.channels.cache.get(default_id);
                         }
                         if(args[1]==="DM" && mode !=2)
                         {
                         msg=message;
-                        message.channel.send("Ok");
+                        message.channel.send(voc_done[getRandomInt(voc_done.length)]);
                         let mention = message.mentions.members.first();
                         if(mention != undefined)
                         {
@@ -119,17 +121,17 @@ client.on('ready', () => {
                                return channel.send(str);
                             }) ;
 
-                        } 
+                        }
                         }
 
 
                     }
                 }
                  }
-            
-        } 
+
+        }
         else{
-            
+
             message.delete();
         }
         if(mode===2 && mainC!=undefined && usr_md === message.author.id && msg_content!="ALAIN MODE 2")
@@ -143,10 +145,9 @@ client.on('ready', () => {
                 mode=0;
                 usr_md=undefined;
             }
-     
+
         }
     })
 
     })
     client.login(process.env.TOKEN);
-
