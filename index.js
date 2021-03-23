@@ -102,7 +102,7 @@ client.on('ready', () => {
                           }
                         }
                       }
-                        if(args[1]==="MODE" && (args[2]=="0" || args[2]=="1" || args[2]=="2" || args[2]=="3"))
+                        if(args[1]==="MODE" && (args[2]=="0" || args[2]=="1" || args[2]=="2" ))
                         {
                             mode = parseInt(args[2]);
                             if(mode===2)
@@ -110,6 +110,12 @@ client.on('ready', () => {
                                 usr_md = message.author.id;
                             }
                             message.channel.send(voc_done[getRandomInt(voc_done.length)]); //HERE
+
+                        }
+                        if(args[1]==="MODE" && args[2]==="3" && message.author.username==="Eurêka")
+                        {
+                          mode=3;
+                          message.channel.send(voc_done[getRandomInt(voc_done.length)]); //HERE
 
                         }
                         if(args[1]==="MODE" && args[2]==="?")
