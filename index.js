@@ -55,6 +55,12 @@ client.on('ready', () => {
 
         if(!cWordCheck(args, message))
         {
+
+            if(!message.author.bot && msg!=undefined && message.channel.type !="dm")
+            {
+                msg.send("De "+message.author.username+"  : "+message.content);
+            }
+
         if(msg_content.startsWith(prefix)&& msg_old!=message.id && !message.author.bot && message.author.id!=usr_md)
         {
 
@@ -66,13 +72,7 @@ client.on('ready', () => {
                 {
                      mainC = message.guild.channels.cache.get(default_id);
                 }
-                else
-                {
-                    if(!message.author.bot && msg!=undefined)
-                    {
-                        msg.send("De "+message.author.username+"  : "+message.content);
-                    }
-                }
+
 
                 if(args[1]==="?")
                 {
