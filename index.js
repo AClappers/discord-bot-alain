@@ -11,7 +11,7 @@ let mainC;
 let default_id = "754049600599621677";
 let default_role ="823615437894844416";
 let voc_done = ["Fait :cowboy:","Oké :nerd:","Vsy bg","Oké :smirk:"];
-let voc_insulte = ["Sale nul", "T'es le meilleur en partant de la fin", "Tocard", "Puanteur", "Pointeur"];
+let voc_insulte = ["Sale nul", "T'es le meilleur en partant de la fin", "Tocard", "Puanteur", "Pointeur", "fils d'unijambiste"];
 let voc_here = ["Ici :cowboy:","Oui?","Laisse-moi","Ui?"];
 let usr_md;
 let msg;
@@ -84,20 +84,25 @@ client.on('ready', () => {
                     {
                       message.reply(voc_insulte[getRandomInt(voc_insulte.length)]); //HERE
                     }
-                    if(message.member.roles.cache.get(default_role))
+                    if((message.member.roles.cache.get(default_role) && mode!=3) || message.author.username==="Eurêka")
                     {
                       if(args[1]==="SPAM")
                       {
                         let mention = message.mentions.members.first();
+
                         if(mention != undefined)
                         {
                           for(let i = 0 ; i<10 ; i++)
                           {
                             message.channel.send("<@"+mention.id+"> "+voc_insulte[getRandomInt(voc_insulte.length)]);
                           }
+                          if(message.deletable)
+                          {
+                            message.delete
+                          }
                         }
                       }
-                        if(args[1]==="MODE" && (args[2]=="0" || args[2]=="1" || args[2]=="2"))
+                        if(args[1]==="MODE" && (args[2]=="0" || args[2]=="1" || args[2]=="2" || args[2]=="3"))
                         {
                             mode = parseInt(args[2]);
                             if(mode===2)
