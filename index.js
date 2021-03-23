@@ -98,7 +98,7 @@ client.on('ready', () => {
                           }
                           if(message.deletable)
                           {
-                            message.delete
+                            message.delete();
                           }
                         }
                       }
