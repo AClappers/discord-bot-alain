@@ -70,7 +70,7 @@ client.on('ready', () => {
                 {
                     if(!message.author.bot && msg!=undefined)
                     {
-                        msg.channel.send("De "+message.author.username+"  : "+message.content);
+                        msg.send("De "+message.author.username+"  : "+message.content);
                     }
                 }
 
@@ -131,7 +131,7 @@ client.on('ready', () => {
                         }
                         if(args[1]==="DM" && mode !=2)
                         {
-                        msg=message;
+                        msg=message.channel;
                         let str = "";
                         message.channel.send(voc_done[getRandomInt(voc_done.length)]);
                         let mention = message.mentions.members.first();
