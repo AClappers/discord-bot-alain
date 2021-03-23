@@ -140,7 +140,7 @@ client.on('ready', () => {
                         {
                             for(let i = 3 ; i < args.length ; i++)
                             {
-                                str+=" "+slp[i];
+                                str+=" "+spl[i];
                             }
 
                             mention.createDM().then(channel => {
