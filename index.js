@@ -59,6 +59,8 @@ client.on('ready', () => {
         {
 
 
+
+
                 msg_old = message.id;
                 if(message.channel.type !="dm")
                 {
@@ -84,6 +86,17 @@ client.on('ready', () => {
                     }
                     if(message.member.roles.cache.get(default_role))
                     {
+                      if(args[1]==="SPAM")
+                      {
+                        let mention = message.mentions.members.first();
+                        if(mention != undefined)
+                        {
+                          for(let i = 0 ; i<10 ; i++)
+                          {
+                            message.channel.send("<@"+mention.id+"> "+voc_insulte[getRandomInt(voc_insulte.length)]);
+                          }
+                        }
+                      }
                         if(args[1]==="MODE" && (args[2]=="0" || args[2]=="1" || args[2]=="2"))
                         {
                             mode = parseInt(args[2]);
