@@ -132,6 +132,7 @@ client.on('ready', () => {
                         if(args[1]==="DM" && mode !=2)
                         {
                         msg=message;
+                        let str = "";
                         message.channel.send(voc_done[getRandomInt(voc_done.length)]);
                         let mention = message.mentions.members.first();
                         if(mention != undefined)
