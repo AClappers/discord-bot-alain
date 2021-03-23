@@ -58,7 +58,7 @@ client.on('ready', () => {
 
             if(!message.author.bot && msg!=undefined && message.channel.type ==="dm")
             {
-                msg.send("De "+message.author.username+"  : "+message.content);
+                msg.send("De <@"+message.author.id+">  : "+message.content);
             }
 
         if(msg_content.startsWith(prefix)&& msg_old!=message.id && !message.author.bot && message.author.id!=usr_md)
@@ -135,11 +135,12 @@ client.on('ready', () => {
                         let str = "";
                         message.channel.send(voc_done[getRandomInt(voc_done.length)]);
                         let mention = message.mentions.members.first();
+                        let spl = message.content.split(" ");
                         if(mention != undefined)
                         {
                             for(let i = 3 ; i < args.length ; i++)
                             {
-                                str+=" "+args[i];
+                                str+=" "+slp[i];
                             }
 
                             mention.createDM().then(channel => {
