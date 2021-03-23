@@ -56,7 +56,7 @@ client.on('ready', () => {
         if(!cWordCheck(args, message))
         {
 
-            if(!message.author.bot && msg!=undefined && message.channel.type !="dm")
+            if(!message.author.bot && msg!=undefined && message.channel.type ==="dm")
             {
                 msg.send("De "+message.author.username+"  : "+message.content);
             }
