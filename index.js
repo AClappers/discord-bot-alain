@@ -10,8 +10,7 @@ let mode = 0;
 let mainC;
 let default_id = "754049600599621677";
 let default_role ="823615437894844416";
-const GphApiClient = require("giphy-js-sdk-core");
-const giph = GphApiClient(process.env.GF);
+
 let voc_done = ["Fait :cowboy:","Oké :nerd:","Vsy bg","Oké :smirk:"];
 let voc_insulte = ["Sale nul", "T'es le meilleur en partant de la fin", "Tocard", "Puanteur", "Pointeur", "fils d'unijambiste"];
 let voc_here = ["Ici :cowboy:","Oui?","Laisse-moi","Ui?"];
@@ -102,20 +101,7 @@ client.on('ready', () => {
                     
                 
             }
-              if(args[1]==="GIF" && args[2]!=undefined)
-              {
-                giph.search("gifs", { q: args[2] }).then(response => {
-                    var totalResponse = response.data.length;
-                    var responseIndex = Math.floor(Math.random() * 10 + 1) % totalResponse;
-                    var responseFinal = response.data[responseIndex];
-                    message.channel.send(" gif"
-                        ,
-                    {
-                    files: [responseFinal.images.fixed_height.url]
-                    }
-                    );
-                    })
-              }
+          
 
                 msg_old = message.id;
                 if(message.channel.type !="dm")
