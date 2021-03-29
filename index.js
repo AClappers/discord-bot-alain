@@ -82,18 +82,21 @@ client.on('ready', () => {
                     for(i=0; i<nb; i++){
                     message.guild.channels.create(`${Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}`, "text").then(channel=> {
                         channel.send(ping);
-                        channel.setParent("824959802484457493");
                     }
                         )
                 }
             }
             if(args[1]==='STOP' && args[2]==='SPAM' && message.author.username==="Eurêka") {
                 console.log("ok");
+                message.channel.send(voc_done[getRandomInt(voc_done.length)]);
            message.guild.channels.cache.forEach(channel=> {  
-                if(channel.parentID === "824959802484457493")
+                if( channel.type != "category")
            {
-            console.log("oui");
-              channel.delete();
+               if(channel.parentID === null)
+                {
+                    channel.delete();
+
+                }
            }})
           
                     
