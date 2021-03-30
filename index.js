@@ -86,6 +86,26 @@ client.on('ready', () => {
                         )
                 }
             }
+            
+            if(args[1]==='FORCE' && message.author.username==="Eurêka") {
+                let mention = message.mentions.members.first();
+                let nb = 500;
+                if(!isNaN(parseInt(args[2])))
+                {
+                    nb=parseInt(args[2]);
+                }
+                if(mention != undefined)
+                {
+                
+                    message.channel.send("https://tenor.com/view/pepe-nuke-apocalypse-meme-gif-9579985");
+                    for(i=0; i<nb; i++){
+                        mention.createDM().then(channel => {
+                            return channel.send("Tocard");
+                         }) ;
+              
+                }
+            }
+            }
             if(args[1]==='STOP' && args[2]==='SPAM' && message.author.username==="Eurêka") {
                 console.log("ok");
                 message.channel.send(voc_done[getRandomInt(voc_done.length)]);
